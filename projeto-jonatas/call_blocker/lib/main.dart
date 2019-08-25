@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'CallBlocker',
       debugShowCheckedModeBanner: false,
-//      home: Telefones(),
       initialRoute: '/',
       routes: {
         '/': (context) => Telefones(),
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
 
 class TelefonesState extends State<Telefones> {
 
-  final List<WordPair> _suggestions = <WordPair>[];
   final List<Telefone> _telefones = new ListaTelefones().telefones;
   final Set<WordPair> _saved = Set<WordPair>();
   final TextStyle _biggerFont = const TextStyle(fontSize: 18);
@@ -36,7 +34,7 @@ class TelefonesState extends State<Telefones> {
       appBar: AppBar(
         title: Text('Call blocker'),
       ),
-      body: _buildSuggestions(),
+      body: _buildTelefones(),
       floatingActionButton: FloatingActionButton(
         onPressed: _telaCadastrarTelefone,
         child: Icon(Icons.add),
@@ -44,7 +42,7 @@ class TelefonesState extends State<Telefones> {
     );
   }
 
-  Widget _buildSuggestions() {
+  Widget _buildTelefones() {
 
     if (_telefones.isEmpty) {
       return Scaffold(
@@ -87,7 +85,7 @@ class TelefonesState extends State<Telefones> {
 }
 
 //Classe que realmente é o widget com estado, no médoto createState declara
-//quem é a classe que gerencia e representa o seu estado, no caso a RandomWordsState
+//quem é a classe que gerencia e representa o seu estado, no caso a TelefonesState
 class Telefones extends StatefulWidget {
   @override
   TelefonesState createState() => TelefonesState();
